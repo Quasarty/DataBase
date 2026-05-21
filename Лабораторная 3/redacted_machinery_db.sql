@@ -29,7 +29,7 @@ CREATE TABLE public.machinery (
 	id_machinery_category integer NOT NULL,
 	CONSTRAINT machinery_pk PRIMARY KEY (id),
 	-- Столетние и более старые станки сомнительны
-	CHECK (year >= 1900)
+	CONSTRAINT year_check CHECK (year >= 1900)
 );
 -- ddl-end --
 ALTER TABLE public.machinery OWNER TO postgres;
@@ -45,7 +45,7 @@ CREATE TABLE public.repair (
 	id_repair_type integer NOT NULL,
 	CONSTRAINT repair_pk PRIMARY KEY (id),
 	-- Дата начала всегда меньше даты конца
-	CHECK (repair_start < repair_end)
+	CONSTRAINT date_check CHECK (repair_start < repair_end)
 );
 -- ddl-end --
 ALTER TABLE public.repair OWNER TO postgres;
@@ -90,7 +90,7 @@ CREATE TABLE public.repair_type (
 	duration smallint NOT NULL,
 	cost money NOT NULL,
 	CONSTRAINT repair_type_pk PRIMARY KEY (id),
-	CHECK (duration > 0)
+	CONSTRAINT duration_check CHECK (duration > 0)
 );
 -- ddl-end --
 ALTER TABLE public.repair_type OWNER TO postgres;
