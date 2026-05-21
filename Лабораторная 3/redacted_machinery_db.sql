@@ -8,8 +8,8 @@
 -- ** These commands were put in this file only as a convenience.
 
 -- object: course_db | type: DATABASE --
-DROP DATABASE IF EXISTS course_db;
-CREATE DATABASE course_db;
+-- DROP DATABASE IF EXISTS course_db;
+-- CREATE DATABASE course_db;
 -- ddl-end --
 
 
@@ -24,7 +24,7 @@ CREATE TABLE public.machinery (
 	year smallint NOT NULL,
 	brand text NOT NULL,
 	-- Значение по умолчанию = 0 (не было ремонтов)
-	repair_ammount smallint DEFAULT 0,
+	repair_ammount smallint NOT NULL DEFAULT 0,
 	id_client integer NOT NULL,
 	id_machinery_category integer NOT NULL,
 	CONSTRAINT machinery_pk PRIMARY KEY (id),
@@ -89,7 +89,8 @@ CREATE TABLE public.repair_type (
 	name text NOT NULL,
 	duration smallint NOT NULL,
 	cost money NOT NULL,
-	CONSTRAINT repair_type_pk PRIMARY KEY (id)
+	CONSTRAINT repair_type_pk PRIMARY KEY (id),
+	CHECK (duration > 0)
 );
 -- ddl-end --
 ALTER TABLE public.repair_type OWNER TO postgres;
