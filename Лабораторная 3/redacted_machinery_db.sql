@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS public.repair CASCADE;
 CREATE TABLE public.repair (
 	id integer NOT NULL,
 	repair_start date NOT NULL,
-	repair_end date NOT NULL,
+	repair_end date,
 	id_machinery integer NOT NULL,
 	id_repair_type integer NOT NULL,
 	CONSTRAINT repair_pk PRIMARY KEY (id),

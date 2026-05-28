@@ -50,7 +50,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<object name="machinery_category_fk" index="2"/>
 	</customidxs></table>
 
-<table name="repair" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+<table name="repair" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="880" y="400"/>
@@ -62,6 +62,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="repair_end" not-null="true">
 		<type name="date" length="0"/>
+	</column>
+	<column name="is_late">
+		<type name="boolean" length="0"/>
 	</column>
 	<constraint name="repair_pk" type="pk-constr" table="public.repair">
 		<columns names="id" ref-type="src-columns"/>
